@@ -5,9 +5,17 @@
   "main": "",
   "scripts": {
     "cypress:open": "cypress open",
-    "pretest": "rm -rf cypress/screenshots cypress/videos",
+    "pretest": "if exist cypress\\screenshots rmdir /s /q cypress\\screenshots && if exist cypress\\videos rmdir /s /q cypress\\videos",
     "test": "cypress run",
+    "test:headed": "cypress run --headed",
     "tag:smoke": "cypress run --env tags='@smoke'",
+    "tag:smoke:headed": "cypress run --headed --env tags='@smoke'",
+    "tag:duckduckgo": "cypress run --env tags='@duckduckgo'",
+    "tag:duckduckgo:headed": "cypress run --headed --env tags='@duckduckgo'",
+    "tag:duckduckgo:verbose": "cypress run --headed --env tags='@duckduckgo' --reporter spec --reporter-options 'verbose=true'",
+    "tag:mi": "cypress run --env tags='@mi'",
+    "tag:mi:headed": "cypress run --headed --env tags='@mi'",
+    "tag:mi:smoke": "cypress run --headed --env tags='@mi and @smoke'",
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc --noEmit",
     "lint": "npm run lint:eslint; npm run lint:tsc",
@@ -49,9 +57,23 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "stepDefinitions": [
+      "cypress/e2e/steps/stepDefinitions/**/*.ts",
+      "cypress/e2e/steps/stepDefinitions/mi/**/*.ts",
       "cypress/e2e/steps/**/*.ts"
     ],
     "html": {
+      "enabled": true,
+      "output": "results/cucumber-report.html"
+    },
+    "json": {
+      "enabled": true,
+      "output": "results/cucumber-report.json"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "results/cucumber-messages.ndjson"
+    },
+    "pretty": {
       "enabled": true
     }
   }
