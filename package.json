@@ -1,5 +1,5 @@
 {
-  "name": "base-cypress-cucumber-typescript",
+  "name": "cypress-typescript-cucumber-framework",
   "version": "1.0.0",
   "description": "BDD, Cypress + Cucumber + Typescript",
   "main": "",
