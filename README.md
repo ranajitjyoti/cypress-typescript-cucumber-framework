@@ -1,125 +1,231 @@
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+# Cypress TypeScript Cucumber Framework
 
-# BDD base project: Cypress + Cucumber + Typescript
+A comprehensive BDD (Behavior Driven Development) test automation framework using Cypress, Cucumber, and TypeScript with Page Object Model design pattern.
 
-Basic example of using Cypress with Cucumber (BDD). This `Gherkin` example includes:
-- Basic Scenario
-- Scenario Outline
-- Tagged tests
+## 🚀 Features
 
-# Table of contents
+- **BDD Testing**: Gherkin syntax with Cucumber for readable test scenarios
+- **TypeScript Support**: Full TypeScript integration for better code quality
+- **Page Object Model**: Organized and maintainable page object structure
+- **Multiple Test Sites**: Support for testing DuckDuckGo and Mi.com websites
+- **Comprehensive Reporting**: HTML, JSON, and console reports
+- **Tag-based Execution**: Run specific test suites using tags
+- **Cross-platform**: Works on Windows, macOS, and Linux
 
-* [Get started](#get-started)
-  * [Installation](#installation)
-* [How to run the tests](#how-to-run-the-tests)
-  * [Running tests](#running-tests)
-  * [Running tagged tests](#running-tagged-tests)
-    * [Running tagged smoke tests](#running-tagged-smoke-tests)
-    * [Running using customized tags](#running-using-customized-tags)
-  * [Running tests manually](#running-tests-manually)
-* [Static code analysis tools](#static-code-analysis-tools)
-  * [How to run the tools](#how-to-run-the-tools)
-  * [ESLint](#eslint)
-    * [Find Problems](#find-problems)
-    * [Fix Automatically](#fix-automatically)
-  * [TypeScript Compiler](#typescript-compiler)
-    * [Checking code without compilation](#checking-code-without-compilation)
-* [Issues](#issues)
-* [License](#license)
+## 📁 Project Structure
 
-# Get started
-
-## Installation
-
-```bash
-npm install
+```
+cypress-typescript-cucumber-framework/
+├── cypress/
+│   ├── e2e/
+│   │   ├── features/
+│   │   │   ├── Duckduckgo.feature
+│   │   │   └── MiWebsite.feature
+│   │   └── steps/
+│   │       ├── src/
+│   │       │   └── pages/
+│   │       │       ├── BasePage.ts
+│   │       │       ├── duckduckgo/
+│   │       │       │   ├── HomePage.ts
+│   │       │       │   └── SearchPage.ts
+│   │       │       └── mi/
+│   │       │           ├── HomePage.ts
+│   │       │           └── ProductPage.ts
+│   │       └── stepDefinitions/
+│   │           ├── common.step.ts
+│   │           ├── duckduckgo/
+│   │           │   └── searchEngine.step.ts
+│   │           └── mi/
+│   │               └── miWebsite.step.ts
+│   ├── screenshots/
+│   ├── support/
+│   │   ├── commands.ts
+│   │   └── e2e.ts
+│   └── videos/
+├── results/
+│   ├── cucumber-report.html
+│   ├── cucumber-report.json
+│   └── cucumber-messages.ndjson
+├── cypress.config.ts
+├── package.json
+└── README.md
 ```
 
-# How to run the tests
+## 🛠️ Installation
 
-## Running tests
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ranajitjyoti/cypress-typescript-cucumber-framework.git
+   cd cypress-typescript-cucumber-framework
+   ```
 
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Install Cypress binary:**
+   ```bash
+   npx cypress install
+   ```
+
+## 🎯 Usage
+
+### Running Tests
+
+**All tests (headless):**
 ```bash
 npm test
 ```
 
-**`output`**: an output is generated for each `.feature` file found.
-
+**All tests (headed - browser visible):**
 ```bash
-    Spec                                              Tests  Passing  Failing  Pending  Skipped
-┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ ✔  web/Duckduckgo.feature                  00:10        3        3        -        -        -  │
-└────────────────────────────────────────────────────────────────────────────────────────────────┘
-  ✔  All specs passed!                       00:10        3        3        -        -        -
+npm run test:headed
 ```
 
-**HTML report**:
-
-![Output](./documentation/images/report_html.png "Report")
-
-## Running tagged tests
-
-### Running tagged smoke tests
-
-```bash
-# defined in package.json file
-npm run tag:smoke
-```
-
-### Running using customized tags
-
-```bash
-npx cypress run --env tags="@smoke and @duckduckgo"
-```
-
-*more details*: [tags](https://github.com/badeball/cypress-cucumber-preprocessor/blob/master/docs/tags.md)
-
-# Running tests manually
-
-Open **`Cypress`** and run the tests manually:
-
+**Open Cypress Test Runner:**
 ```bash
 npm run cypress:open
 ```
 
-# Static code analysis tools
+### Tag-based Test Execution
 
-## How to run the tools
+**Run smoke tests:**
+```bash
+npm run tag:smoke
+npm run tag:smoke:headed  # with browser visible
+```
 
-Run ESLint and TypeScript Compiler (without compilation)
+**Run DuckDuckGo tests:**
+```bash
+npm run tag:duckduckgo
+npm run tag:duckduckgo:headed  # with browser visible
+```
 
+**Run Mi.com tests:**
+```bash
+npm run tag:mi
+npm run tag:mi:headed  # with browser visible
+npm run tag:mi:smoke   # Mi smoke tests only
+```
+
+### Code Quality
+
+**Run linting:**
 ```bash
 npm run lint
 ```
 
-## ESLint
-
-### Find Problems
-
-ESLint statically analyzes the code to find problems.
-
+**Fix linting issues:**
 ```bash
-npm run lint:eslint
+npm run lint:fix
 ```
 
-### Fix Automatically
+## 📊 Reports
 
-Many problems ESLint finds can be automatically fixed.
+After test execution, reports are generated in the `results/` folder:
 
-```bash
-npm run lint:eslint:fix
-```
+- **HTML Report**: `results/cucumber-report.html` - Open in browser for detailed results
+- **JSON Report**: `results/cucumber-report.json` - For CI/CD integration
+- **Messages**: `results/cucumber-messages.ndjson` - Detailed step execution logs
 
-## TypeScript Compiler
+## 🏗️ Framework Architecture
 
-### Checking code without compilation
+### Page Object Model
+- **BasePage**: Abstract base class with common page methods
+- **Site-specific Pages**: Inherit from BasePage for each website
+- **Reusable Methods**: Common actions like click, type, wait, etc.
 
-Check the types and validate the code using TypeScript without compilation.
+### Step Definitions
+- **Modular Structure**: Organized by website/feature
+- **Reusable Steps**: Common steps in `common.step.ts`
+- **Type Safety**: Full TypeScript support
 
-```bash
-npm run lint:tsc
-```
+### Features
+- **Gherkin Syntax**: Human-readable test scenarios
+- **Background Steps**: Common setup steps
+- **Scenario Outlines**: Data-driven testing
+- **Tags**: Organize and filter tests
 
-# License
+## 🔧 Configuration
 
-[MIT](./LICENSE)
+### Cypress Configuration
+- File: `cypress.config.ts`
+- Cucumber preprocessor integration
+- ESBuild for TypeScript compilation
+
+### Cucumber Configuration
+- File: `package.json` (cypress-cucumber-preprocessor section)
+- Step definitions paths
+- Report generation settings
+- Tag filtering support
+
+## 🌐 Supported Websites
+
+1. **DuckDuckGo** (`@duckduckgo`)
+   - Search functionality testing
+   - Result verification
+
+2. **Mi India** (`@mi`)
+   - Product search
+   - Navigation testing
+   - Product details verification
+
+## 🚦 Adding New Tests
+
+1. **Create Feature File:**
+   ```gherkin
+   @your-tag
+   Feature: Your feature description
+   
+   Scenario: Your test scenario
+     Given I do something
+     When I perform an action
+     Then I should see a result
+   ```
+
+2. **Create Page Object:**
+   ```typescript
+   import BasePage from '../BasePage'
+   
+   export default class YourPage extends BasePage {
+     protected readonly BASE_URL = 'https://your-site.com'
+     
+     yourMethod(): void {
+       // Implementation
+     }
+   }
+   ```
+
+3. **Create Step Definitions:**
+   ```typescript
+   import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor'
+   
+   Given('I do something', function () {
+     // Implementation
+   })
+   ```
+
+4. **Add npm Script:**
+   ```json
+   "tag:your-tag": "cypress run --env tags='@your-tag'"
+   ```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Run linting and tests
+6. Submit a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 🔗 Links
+
+- [Cypress Documentation](https://docs.cypress.io/)
+- [Cucumber Documentation](https://cucumber.io/docs/)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
