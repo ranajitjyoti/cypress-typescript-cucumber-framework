@@ -10,9 +10,7 @@
     "test:headed": "cypress run --headed",
     "tag:smoke": "cypress run --env tags='@smoke'",
     "tag:smoke:headed": "cypress run --headed --env tags='@smoke'",
-    "tag:duckduckgo": "cypress run --env tags='@duckduckgo'",
-    "tag:duckduckgo:headed": "cypress run --headed --env tags='@duckduckgo'",
-    "tag:duckduckgo:verbose": "cypress run --headed --env tags='@duckduckgo' --reporter spec --reporter-options 'verbose=true'",
+
     "tag:mi": "cypress run --env tags='@mi'",
     "tag:mi:headed": "cypress run --headed --env tags='@mi'",
     "tag:mi:smoke": "cypress run --headed --env tags='@mi and @smoke'",
@@ -58,7 +56,6 @@
     "nonGlobalStepDefinitions": false,
     "stepDefinitions": [
       "cypress/e2e/steps/stepDefinitions/**/*.ts",
-      "cypress/e2e/steps/stepDefinitions/mi/**/*.ts",
       "cypress/e2e/steps/**/*.ts"
     ],
     "html": {

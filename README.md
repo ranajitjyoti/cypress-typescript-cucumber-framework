@@ -7,7 +7,7 @@ A comprehensive BDD (Behavior Driven Development) test automation framework usin
 - **BDD Testing**: Gherkin syntax with Cucumber for readable test scenarios
 - **TypeScript Support**: Full TypeScript integration for better code quality
 - **Page Object Model**: Organized and maintainable page object structure
-- **Multiple Test Sites**: Support for testing DuckDuckGo and Mi.com websites
+- **Mi.com Testing**: Comprehensive testing support for Mi.com website
 - **Comprehensive Reporting**: HTML, JSON, and console reports
 - **Tag-based Execution**: Run specific test suites using tags
 - **Cross-platform**: Works on Windows, macOS, and Linux
@@ -19,22 +19,16 @@ cypress-typescript-cucumber-framework/
 ├── cypress/
 │   ├── e2e/
 │   │   ├── features/
-│   │   │   ├── Duckduckgo.feature
 │   │   │   └── MiWebsite.feature
 │   │   └── steps/
 │   │       ├── src/
 │   │       │   └── pages/
 │   │       │       ├── BasePage.ts
-│   │       │       ├── duckduckgo/
-│   │       │       │   ├── HomePage.ts
-│   │       │       │   └── SearchPage.ts
 │   │       │       └── mi/
 │   │       │           ├── HomePage.ts
 │   │       │           └── ProductPage.ts
 │   │       └── stepDefinitions/
 │   │           ├── common.step.ts
-│   │           ├── duckduckgo/
-│   │           │   └── searchEngine.step.ts
 │   │           └── mi/
 │   │               └── miWebsite.step.ts
 │   ├── screenshots/
@@ -94,12 +88,6 @@ npm run cypress:open
 ```bash
 npm run tag:smoke
 npm run tag:smoke:headed  # with browser visible
-```
-
-**Run DuckDuckGo tests:**
-```bash
-npm run tag:duckduckgo
-npm run tag:duckduckgo:headed  # with browser visible
 ```
 
 **Run Mi.com tests:**
@@ -162,11 +150,7 @@ After test execution, reports are generated in the `results/` folder:
 
 ## 🌐 Supported Websites
 
-1. **DuckDuckGo** (`@duckduckgo`)
-   - Search functionality testing
-   - Result verification
-
-2. **Mi India** (`@mi`)
+1. **Mi India** (`@mi`)
    - Product search
    - Navigation testing
    - Product details verification
