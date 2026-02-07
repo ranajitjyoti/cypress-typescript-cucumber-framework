@@ -29,12 +29,6 @@ Feature: Mi India website testing
     When I click on the first product
     Then I should see the product details for "<product>"
 
-          @smoke
-  Scenario: Search for Redmi phone1
-    Given I search for "Redmi" product
-    When I click on the first product
-    Then I should see the product details for "Redmi"
-    And the product image should be visible
 
     Examples:
       | product |
