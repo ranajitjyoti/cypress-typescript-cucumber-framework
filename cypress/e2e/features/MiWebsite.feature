@@ -24,11 +24,6 @@ Feature: Mi India website testing
     When I click on the first product
     Then I should see the product details for "<product>"
 
-  Scenario Outline: Search for different products2
-    Given I search for "<product>" product
-    When I click on the first product
-    Then I should see the product details for "<product>"
-
 
     Examples:
       | product |
