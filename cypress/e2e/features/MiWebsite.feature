@@ -23,8 +23,6 @@ Feature: Mi India website testing
     Given I search for "<product>" product
     When I click on the first product
     Then I should see the product details for "<product>"
-        When I click on the first product
-    Then I should see the product details for "<product>"
 
 
     Examples:
