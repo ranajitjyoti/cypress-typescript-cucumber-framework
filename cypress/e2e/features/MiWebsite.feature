@@ -12,12 +12,6 @@ Feature: Mi India website testing
     Then I should see the product details for "Redmi"
     And the product image should be visible
 
-      @smoke
-  Scenario: Search for Redmi phone1
-    Given I search for "Redmi" product
-    When I click on the first product
-    Then I should see the product details for "Redmi"
-    And the product image should be visible
 
   Scenario Outline: Search for different products
     Given I search for "<product>" product
