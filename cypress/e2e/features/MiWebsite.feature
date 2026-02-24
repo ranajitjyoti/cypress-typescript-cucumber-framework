@@ -17,6 +17,8 @@ Feature: Mi India website testing
     Given I search for "<product>" product
     When I click on the first product
     Then I should see the product details for "<product>"
+     And the product image should be visible
+    
 
     Examples:
       | product |
