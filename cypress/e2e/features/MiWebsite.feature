@@ -23,12 +23,6 @@ Feature: Mi India website testing
     Given I search for "Redmi Note 15 Pro" product
     When I click on the first product
     Then I should see the product details for "Redmi Note 15 Pro"
-
-      @smoke
-  Scenario: Search for Redmi Note 15 Pro phone3
-    Given I search for "Redmi Note 15 Pro" product
-    When I click on the first product
-    Then I should see the product details for "Redmi Note 15 Pro"
     
   Scenario Outline: Search for different products
     Given I search for "<product>" product
