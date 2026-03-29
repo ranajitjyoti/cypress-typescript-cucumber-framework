@@ -1,4 +1,4 @@
-@mi
+@mi @redroutes
 Feature: Mi India website testing
 
   Background:
