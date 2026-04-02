@@ -5,7 +5,7 @@ Feature: Mi India website testing
     Given I go to the Mi India website
     And I should see the Mi India page title
 
-  @smoke @regression
+  @smoke 
   Scenario: Search for Redmi phone
     Given I search for "Redmi" product
     When I click on the first product
