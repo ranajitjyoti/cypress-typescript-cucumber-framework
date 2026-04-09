@@ -12,7 +12,7 @@ Feature: Mi India website testing
     Then I should see the product details for "Redmi"
     And the product image should be visible
 
-  @smoke 
+  @smoke  @regression
   Scenario: Search for Redmi Note 15 phone
     Given I search for "Redmi Note 15" product
     When I click on the first product
