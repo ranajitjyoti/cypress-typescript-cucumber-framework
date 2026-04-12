@@ -2,7 +2,7 @@ name: Auto Daily Push
 
 on:
   schedule:
-    - cron: '12 20 * * *'  # Runs every day at 1:42 AM IST (UTC+5:30)
+    - cron: '27 20 * * *'  # Runs every day at 1:57 AM IST (UTC+5:30)
   workflow_dispatch:        # Allows manual trigger from GitHub Actions tab
 
 permissions:
