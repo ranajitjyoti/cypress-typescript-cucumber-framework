@@ -27,6 +27,7 @@ jobs:
         run: |
           git config user.name "ranajitjyoti"
           git config user.email "ranajitjyoti4@gmail.com"
+          git pull origin master --rebase
           git add commit-log.txt
           git commit -m "cypress code changes $(date +'%d-%m-%Y')"
           git push
