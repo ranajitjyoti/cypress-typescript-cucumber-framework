@@ -2,8 +2,11 @@ name: Auto Daily Push
 
 on:
   schedule:
-    - cron: '32 1 * * *'  # Runs every day at 1:32 AM UTC
-  workflow_dispatch:        # Allows manual trigger from GitHub
+    - cron: '12 20 * * *'  # Runs every day at 1:42 AM IST (UTC+5:30)
+  workflow_dispatch:        # Allows manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
 
 jobs:
   auto-push:
@@ -13,15 +16,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Make a change
         run: echo "cypress code changes $(date +'%d-%m-%Y')" > auto-push-log.txt
 
       - name: Commit and push
         run: |
-          git config user.name "ranajitjyoti"
-          git config user.email "ranajitjyoti@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "cypress code changes $(date +'%d-%m-%Y')" || echo "Nothing to commit"
-          git push origin master
+          git diff --staged --quiet || git commit -m "cypress code changes $(date +'%d-%m-%Y')"
+          git push
