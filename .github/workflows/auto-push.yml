@@ -26,7 +26,7 @@ jobs:
       - name: Commit and push
         run: |
           git config user.name "ranajitjyoti"
-          git config user.email "ranajitjyoti@users.noreply.github.com"
+          git config user.email "ranajitjyoti4@gmail.com"
           git add commit-log.txt
           git commit -m "cypress code changes $(date +'%d-%m-%Y')"
           git push
