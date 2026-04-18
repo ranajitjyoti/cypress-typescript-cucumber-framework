@@ -18,7 +18,7 @@ Feature: Mi India website testing
     When I click on the first product
     Then I should see the product details for "Redmi Note 15"
     
-      @smoke  @regression
+      @smoke  @regression  @redroutes
   Scenario: Search for Redmi Note 15 Pro phone
     Given I search for "Redmi Note 15 Pro" product
     When I click on the first product
