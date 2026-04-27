@@ -5,14 +5,14 @@ Feature: Mi India website testing
     Given I go to the Mi India website
     And I should see the Mi India page title
 
-  @smoke  @regression @redroutes
+  @smoke @redroutes @DailyRegression
   Scenario: Search for Redmi phone
     Given I search for "Redmi" product
     When I click on the first product
     Then I should see the product details for "Redmi"
     And the product image should be visible
 
-  @smoke  @regression @redroutes
+  @smoke  @DailyRegression @redroutes
   Scenario: Search for Redmi Note 15 phone
     Given I search for "Redmi Note 15" product
     When I click on the first product
