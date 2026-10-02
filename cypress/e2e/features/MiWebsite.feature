@@ -1,5 +1,5 @@
 @mi @redroutes
-Feature: Mi India website testing
+Feature: Mi India website testing1
 
   Background:
     Given I go to the Mi India website
